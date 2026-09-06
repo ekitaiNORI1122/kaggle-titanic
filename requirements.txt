@@ -1,0 +1,12 @@
+numpy
+pandas
+pyarrow
+scikit-learn
+lightgbm
+matplotlib
+seaborn
+tqdm
+jupyterlab
+ipykernel
+kaggle
+nbstripout

@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.ipynb_checkpoints/
+
+# Kaggle のデータと提出物（リポジトリには入れない）
+data/**
+!data/**/
+!data/**/.gitkeep
+submissions/**
+!submissions/.gitkeep
+
+# 認証情報
+kaggle.json
+.env
+
+# IDE
+.idea/
