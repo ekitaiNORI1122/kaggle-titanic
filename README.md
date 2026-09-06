@@ -8,8 +8,8 @@
  VS Code で src/ を編集
         │  git push
         ▼
-   GitHub (private)
-        │  git clone (Kaggle Secrets のトークンで認証)
+   GitHub (public)
+        │  git clone (public なので認証不要)
         ▼
  Kaggle Notebook で実行 → submission.csv → Submit
 ```
@@ -62,26 +62,20 @@ CLI から一気に回す:
 
 ## Kaggle Notebook 側のセットアップ（初回のみ）
 
-1. **GitHub トークンを作る**
-   GitHub → Settings → Developer settings → Personal access tokens → **Fine-grained tokens**
-   - Repository access: `kaggle-titanic` のみ
-   - Permissions: Contents = **Read-only**
-   - 有効期限は短め（90日など）
+1. **Notebook を作る**
+   Kaggle の Code → New Notebook → File → Import Notebook で
+   `kaggle_notebook/titanic_runner.ipynb` をアップロード
 
-2. **Kaggle に登録する**
-   Notebook の **Add-ons → Secrets** で `GITHUB_TOKEN` という名前で登録
-
-3. **Notebook を作る**
-   `kaggle_notebook/titanic_runner.ipynb` をアップロード（Kaggle の Code → New Notebook → File → Import Notebook）
-
-4. **Notebook の設定**
+2. **Notebook の設定**
    - **Add Input** → Competitions → `Titanic` を追加
    - **Settings → Internet** を On（clone に必要）
 
 以降は VS Code で push → Kaggle Notebook を Run するだけで最新コードが走る。
 
-> トークンは `/tmp` に clone することで Notebook の出力に残らないようにしている。
-> `/kaggle/working` に clone すると `.git/config` ごと保存され、トークンが漏れる。
+> リポジトリが public なので clone に認証は不要。
+> private に戻す場合は、GitHub の Personal Access Token を Kaggle の
+> **Add-ons → Secrets** に登録し、clone URL を
+> `https://x-access-token:{token}@github.com/...` の形にする必要がある。
 
 ## データの取得
 
